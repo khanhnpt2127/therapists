@@ -1,7 +1,7 @@
 # Final project - *THERAPIST* 
 *Official name to be decided*
 
-**THERAPIST** is a Ruby on Rails blog application that allows users to send messages to each other that can only be read once.
+**THERAPIST** is a Ruby on Rails application that connects user to avaiable psychiatrist in an easy and convenient way.
 
 Submitted by: **Group 5**
 
