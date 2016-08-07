@@ -1,4 +1,4 @@
-# Homework 2 - *THERAPIST* 
+# Final project - *THERAPIST* 
 *Official name to be decided
 
 **THERAPIST** is a Ruby on Rails blog application that allows users to send messages to each other that can only be read once.
