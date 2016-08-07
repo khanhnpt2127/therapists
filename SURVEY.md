@@ -2,7 +2,7 @@
 
 ## Survey method: 
 
-collect information from students and working people in HCMC area.
+We asked for information from students and working people in Ho Chi Minh city.
 
 [Link to our survey](https://docs.google.com/forms/d/e/1FAIpQLSd6hChRvapGetsDgrfcJeH4qrh592vyOWGyacR66T2y5-eqTA/viewform?c=0&w=1)
 
