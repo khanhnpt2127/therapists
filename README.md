@@ -9,7 +9,7 @@ Time spent: **X** hours
 
 URL: **Insert your Heroku URL here**
 
-SURVEY: ![Here is our survey and the result](https://github.com/khanhnpt2127/therapists/blob/master/SURVEY.md)
+SURVEY: **[Here is our survey and the result](https://github.com/khanhnpt2127/therapists/blob/master/SURVEY.md)**
 
 ## User Stories
 
