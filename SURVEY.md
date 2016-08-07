@@ -1,6 +1,6 @@
 # Survey result for our group
 
-## Survey method: 
+##3 Survey method: 
 
 We asked for information from students and working people in Ho Chi Minh city.
 
@@ -8,4 +8,4 @@ We asked for information from students and working people in Ho Chi Minh city.
 
 [Result](https://drive.google.com/open?id=1AjTxWyqrdC-swd8hBjGks8gBint2tkssV-R3gD9kWiw)
 
-### People whose who have the need to see a psychiatrist admits to having many difficulties, all of which our project are aiming to solve.
+### People whose who have the need to see a psychiatrist admit to having many difficulties, all of which our project are aiming to solve.
