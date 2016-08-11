@@ -9,6 +9,12 @@ class UsersController < ApplicationController
   def show
     
   end
+  
+  def hosts
+    
+    @hosts = Host.all
+  end
+  
   def new
     @user = User.new
   end
