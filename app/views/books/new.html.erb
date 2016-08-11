@@ -1,0 +1,22 @@
+<%= form_for @book do |f|%>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Enter the Event Name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, placeholder: "Enter Description", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :location %>
+    <%= f.text_field :location, placeholder: "Enter Location", class: "form-control" %>
+  </div>
+
+   <%= f.select :host_id, Host.all.map{|e| [e.name, e.id]} %>
+
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+
+<%= f.submit %>
+<% end %>

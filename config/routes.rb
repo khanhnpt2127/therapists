@@ -10,9 +10,9 @@ end
  resources :hosts do
   member do
     get :users
+  end
 end
-
- end
+ resources :books
  resources :sessions ,only: [:new,:create]
  get '/logout' => 'sessions#destroy'
 end
