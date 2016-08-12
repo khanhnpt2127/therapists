@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def current_host
+    return @current_host if @current_host
+    if session[:host_id]
+      @current_host = Host.find(session[:host_id])
+    end
+  end
+  
   def authenticate_user!
     redirect_to root_path unless current_user
   end

@@ -1,17 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  def index
-   
+  def index 
     Rails.logger.info request.env["HTTP_COOKIE"]
     @users = User.all
   end
 
   def show
-    
   end
   
   def hosts
-    
     @hosts = Host.all
   end
   
