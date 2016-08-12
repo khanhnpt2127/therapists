@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @hosts = Host.all
+    @users= User.all
   end
 
   def create
@@ -12,9 +13,9 @@ class BooksController < ApplicationController
       render 'new'
     end
   end
-  
+
   private
-  
+
   def book_params
     params.require(:book).permit(:name, :location, :description, :user_id, :host_id )
   end
