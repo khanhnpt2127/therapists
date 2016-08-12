@@ -1,0 +1,15 @@
+
+<%= form_for @survey do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <% f.fields_for :questions do |builder| %>
+  <p>
+    <%= builder.label :content, "Question" %><br />
+    <%= builder.text_area :content, :rows => 3 %>
+  </p>
+  <% end %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

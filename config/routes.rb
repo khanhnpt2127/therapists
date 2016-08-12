@@ -17,6 +17,9 @@ resources :hosts do
 end
 
 resources :books
+
+resources :surveys
+
 resources :sessions ,only: [:new,:create]
 
 get '/logout' => 'sessions#destroy'
