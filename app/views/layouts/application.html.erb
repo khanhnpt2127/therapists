@@ -9,6 +9,12 @@
   </head>
 
   <body>
-    <%= yield %>
+ 
+    <% unless flash.empty? %>
+		<% flash.each do |key, value| %>
+			<div class="alert alert-danger"><%= value %></div>
+		<% end %>
+  <% end %> 
+  <%=yield %>
   </body>
 </html>
