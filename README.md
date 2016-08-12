@@ -19,8 +19,8 @@ The following **required** functionality is complete:
 
 * [X] User can sign up by providing their email, password, and name. 
 * [X] User can login using an email and password. 
-* [ ] User must fill out a survey before being matched with potential therapists.
-* [ ] The survey must be filled before user can see the list of therapists.
+* [X] User must fill out a survey before being matched with potential therapists.
+* [X] The survey must be filled before user can see the list of therapists.
 	**After filling out the survey:**
 * [X] User can see a list of potential psychologists/therapist who suits their needs.
 * [ ] User can send messages to therapists. Messages are always free, and must be answered in at least 24 hours.
@@ -33,7 +33,7 @@ The following **required** functionality is complete:
 
 * [X] Must have credentials.
 * [X] Can see a list of potential users.
-* [ ] With each user, a therapist can see his or her message and the survey result.
+* [X] With each user, a therapist can see his or her message and the survey result.
 * [X] Therapist can set an appointment with user.
 * [ ] Therapist can answer a user' question.
 
