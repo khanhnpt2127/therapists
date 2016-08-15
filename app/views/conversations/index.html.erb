@@ -2,27 +2,18 @@
   <h3>Mailbox</h3>
   <div class="ui list">
     <div class=”item”>
-      <% if current_user %>
         <% @conversations.each do |conversation| %>
           <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
             <% if conversation.sender_id == current_user.id %>
-              <% recipient = User.find(conversation.recipient_id) %>
+              <% if conversation.recipient_id.nil? %>
+                <% recipient = Host.find(conversation.host_id)%>
+              <% else %>
+                <% recipient = User.find(conversation.recipient_id) %>
+              <% end %>
             <% else %>
               <% recipient = User.find(conversation.sender_id) %>
             <% end %>
           <% end %>
-        <% end %>
-      <% else %>
-        <% @conversations.each do |conversation| %>
-          <% if conversation.sender_id == current_host.id || conversation.recipient_id == current_host.id %>
-            <% if conversation.sender_id == current_host.id %>
-              <% recipient1 = Host.find(conversation.host_id) %>
-            <% else %>
-              <% recipient1 = Host.find(conversation.sender_id) %>
-            <% end %>
-          <% end %>
-        <% end %>
-
         <table class="table">
           <thead class="thead thead-default">
             <tr>
@@ -32,9 +23,6 @@
           </thead>
           <tbody>
             <tr>
-              <% if recipient1.present? %>
-                <td><%= link_to recipient1.name %>
-              <%end %>
               <td><%= link_to recipient.name, conversation_messages_path(conversation)%></td>
             </tr>
           </tbody>
@@ -53,8 +41,9 @@
         </div>
       <% end %>
     <% end %>
+    <h3>All Hosts</h3>
     <% @hosts.each do |host| %>
-      <%= host.name %> <%= link_to 'Message host',conversations_path(sender_id: current_user.id, host_id: host.id), method: 'post' %>
+      <%= host.name %> <%= link_to 'MEssage Host', conversations_path(sender_id: current_user.id, host_id: host.id), method: 'post' %>
     <% end %>
   </div>
 </div>

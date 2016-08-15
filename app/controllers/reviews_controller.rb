@@ -1,11 +1,16 @@
 class ReviewsController < ApplicationController
 
   def create
-    @review = current_user.reviews.new review_params
-    @review.reviewable = current_user
-    @review.user = current_user if current_user
-    @review.host_id = params[:host_id]
-
+    if current_user
+      @review = current_user.reviews.new review_params
+      @review.reviewable = current_user
+      @review.user = current_user if current_user
+    else
+      @review = current_host.reviews.new review_params
+      @review.reviewable = current_host
+      @review.host_id = current_host if current_host
+    end
+        @review.host_id = params[:host_id]
     @review.save!
     redirect_to @reviewable, notice: "Your comment was posted"
   end
