@@ -26,6 +26,7 @@ class HostsController < ApplicationController
      
   end
 
+
   private
 
   def host_params
