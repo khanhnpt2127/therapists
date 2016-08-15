@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
     @hosts = Host.all
     @user = User.find(params[:user_id])
     @message = Message.new
-    @messages = Message.all
+    @messages = current_user.received_messages
   end
   
   def received
