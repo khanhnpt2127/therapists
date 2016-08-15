@@ -1,0 +1,10 @@
+<%= form_for [@user, @message] do |f| %>
+  <%= f.label :recipient_id %>
+  <% if current_user %>
+    <%= f.select :recipient_id, @hosts.map{|u| [u.email, u.id]} %>
+  <% else %>
+    <%= f.select :recipient_id, @users.map{|u| [u.email, u.id]} %>
+  <% end %>
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+<% end %>

@@ -8,6 +8,9 @@ resources :users do
     end
 end
 
+resources :conversations do
+  resources :messages
+end
 
 resources :hosts do
   resources :reviews, module: :hosts

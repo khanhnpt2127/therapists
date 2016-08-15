@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812092850) do
+ActiveRecord::Schema.define(version: 20160815093052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20160812092850) do
     t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "host_id"
+  end
+
   create_table "hosts", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
@@ -37,6 +45,19 @@ ActiveRecord::Schema.define(version: 20160812092850) do
     t.boolean  "is_super",        default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "read_at"
+    t.integer  "host_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.index ["host_id"], name: "index_messages_on_host_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|
