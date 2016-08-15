@@ -3,12 +3,14 @@ Rails.application.routes.draw do
  root 'home#index'
 resources :users do
   resources :reviews, module: :users
-  resources :messages
   member do
       get :hosts
     end
 end
 
+resources :conversations do
+  resources :messages
+end
 
 resources :hosts do
   resources :reviews, module: :hosts

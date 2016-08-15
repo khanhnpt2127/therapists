@@ -2,11 +2,19 @@ class User < ApplicationRecord
   has_secure_password
   has_many :reviews, as: :reviewable
   has_many :books, dependent: :destroy
-  has_many :messages, foreign_key: 'sender_id'
-  has_many :received_messages,class_name: 'Message', foreign_key: :recipient_id
+  has_many :messages
+  has_many :participations, class_name: 'Participant'
+  has_many :conversations, through: :participations
+  
+  
+  has_many :test,class_name: 'Message', foreign_key: :recipient_id
 
-  def self.sent_messages
-    where(sender: self)
+  def received_messages(page)
+    Message.where(recipient: self).page(page)
+  end
+  
+  def sent_messages(page)
+    Message.where(sender: self).page(page)
   end
 
   def latest_received_messages(n)

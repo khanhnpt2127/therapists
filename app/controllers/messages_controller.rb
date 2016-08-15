@@ -1,60 +1,51 @@
-class MessagesController < ApplicationController  
-  def show
-    @message = Message.find params[:id]
-    if @message.read? && current_user == @message.recipient
-      @message.mark_as_read!
-    end
-  end
-  
-  def sent
-    load_user
-    @messages = @user.sent_messages
-  end
- 
-  def new 
-    @user = User.new
-    @message = Message.new
-  end
-  
-  def index
-    @hosts = Host.all
-    @user = User.find(params[:user_id])
-    @message = Message.new
-    @messages = current_user.received_messages
-  end
-  
-  def received
-    load_user
-    @messages = @user.received_messages
-  end
+class MessagesController < ApplicationController
+    
+    before_action :authenticate_user!  
+    before_action :get_conversation 
+    before_action :secure_conversation 
 
-  def load_user
-    if params[:user_id]
-      @user = User.find params[:user_id]
-    else
-      @user = current_user
-    end
-  end
-
-  def create
-    @user = User.find params[:user_id]
-    @message = Message.new message_params
-    @message.sender_id = current_user.id
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to root_path, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @messages } 
-      else
-        format.html { redirect_to root_path, notice: 'Error' }       
+    def index
+      @messages = @conversation.messages.order(created_at: :asc)
+      if @messages.length > 10
+         @over_ten = true
+         @messages = @messages[-10..-1]
       end
 
+      if params[:m]
+         @over_ten = false
+         @messages = @conversation.messages
+      end
+      @message = @conversation.messages.new
     end
-  end
-  private
 
-  def message_params
-    params.require(:message).permit(:recipient_id, :body)
-  
-  end
-  
+    def new
+      @message = @conversation.messages.new
+    end
+
+    def create
+      @message = @conversation.messages.new (message_params)
+      if @message.save
+        redirect_to conversation_messages_path(@conversation)
+      else
+        raise 'Sum tin wong'
+      end
+    end
+
+    private
+    def message_params
+      params.require(:message).permit(:title, :body, :user_id)
+    end
+
+    def get_conversation
+      @conversation = Conversation.find(params[:conversation_id])
+    end
+
+    def secure_conversation
+
+      current_user_id = current_user.id
+      if current_user_id != @conversation.sender_id && current_user_id != @conversation.recipient_id
+        redirect_to root_path
+
+      end
+    end
 end
