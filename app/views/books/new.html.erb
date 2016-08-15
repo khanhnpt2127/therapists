@@ -13,10 +13,16 @@
     <%= f.label :location %>
     <%= f.text_field :location, placeholder: "Enter Location", class: "form-control" %>
   </div>
+   <% if current_user %>
+    <%= f.select :host_id, Host.all.map{|e| [e.name, e.id]} %>
+   <% else %>
+    <%= f.select :user_id, User.all.map{|e| [e.name, e.id]} %>
+   <% end %>
 
-   <%= f.select :host_id, Host.all.map{|e| [e.name, e.id]} %>
-
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-
+   <% if current_user %>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+   <% else %>
+      <%= f.text_field :host_id, value: current_host.id, type: "hidden" %>
+   <% end %>
 <%= f.submit %>
 <% end %>
