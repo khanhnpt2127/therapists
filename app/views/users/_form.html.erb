@@ -1,0 +1,7 @@
+<h3>Comments </h3>
+<% Review.where(user_id: @user.id).each do |review| %>
+  <div class="well">
+    <%= review.reviewable.name %>
+    <%= review.content %>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<%= form_for [reviewable, Review.new] do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: "form-control", placeholder: "Add a Review" %>
+  </div>
+
+  <%= f.submit "Submit" %>
+<% end %>
