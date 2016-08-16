@@ -4,10 +4,9 @@
 <div class='ui'>
   <% @messages.each do |message| %>
     <% if message.body %>
-      <% user = User.find(message.user_id) %>
       <div class=”item”>
         <div class=”content”>
-          <div class=”header”><strong><%= user.name %></strong>     <%= message.message_time %></div>
+          <div class=”header”><strong><%= message.user.name %></strong>     <%= message.message_time %></div>
           <div class=”list”>
             <div class=”item”>
               <i class=”right triangle icon”></i>
@@ -25,7 +24,11 @@
   <div class=”field”>
     <%= f.text_area :body, class: 'form-control' %>
   </div>
-  <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
+  
+  <% user = current_user || current_host %>
+  <%= f.text_field :user_id, value: user.id, type: 'hidden' %>
+  <%= f.text_field :user_type, value: user.class.name, type: 'hidden' %>
+
   <div>
     <%= f.submit 'Add Reply', class: 'btn btn-primary' %>
   </div>

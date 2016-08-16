@@ -50,15 +50,14 @@ ActiveRecord::Schema.define(version: 20160815080328) do
 
   create_table "messages", force: :cascade do |t|
     t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
+    t.integer  "conversation_id", null: false
+    t.integer  "user_id",         null: false
+    t.string   "user_type",       null: false
     t.datetime "read_at"
-    t.integer  "host_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-    t.index ["host_id"], name: "index_messages_on_host_id", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+    t.index ["user_id", "user_type"], name: "index_messages_on_user_id_and_user_type", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|

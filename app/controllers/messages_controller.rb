@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
     
-    before_action :authenticate_user!  
+   
     before_action :get_conversation 
-    before_action :secure_conversation 
+   
 
     def index
       @messages = @conversation.messages.order(created_at: :asc)
@@ -23,8 +23,8 @@ class MessagesController < ApplicationController
     end
 
     def create
-      @message = @conversation.messages.new (message_params)
-      if @message.save
+      @message = @conversation.messages.new(message_params)
+      if @message.save!
         redirect_to conversation_messages_path(@conversation)
       else
         raise 'Sum tin wong'
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
 
     private
     def message_params
-      params.require(:message).permit(:title, :body, :user_id)
+      params.require(:message).permit(:body, :user_id, :user_type)
     end
 
     def get_conversation

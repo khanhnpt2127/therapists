@@ -25,22 +25,17 @@
 <div class="ui segment">
   <h3>All Users</h3>
   <div class="ui list">
-
     <% @users.each do |user| %>
-      <% unless user.nil? %>
-      <% if user.id != current_user.id %>
         <div class=”item”>
-          <%= user.name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id, recipient_type: user.class.name), method: 'post'%>
+          <%= user.name %> <%= link_to 'Message me!', conversations_path(recipient_id: user.id, recipient_type: user.class.name), method: 'post'%>
         </div>
-      <% else %>
-        <%= " NO Data" %>
-      <% end %>
+  
     <% end %>
-  <% end %>
+
 
     <h3>All Hosts</h3>
     <% @hosts.each do |host| %>
-      <%= host.name %> <%= link_to 'Message Host', conversations_path(sender_id: current_user.id, recipient_id: host.id, recipient_type: host.class.name), method: 'post' %>
+      <%= host.name %> <%= link_to 'Message Host', conversations_path( recipient_id: host.id, recipient_type: host.class.name), method: 'post' %>
     <% end %>
 
   </div>

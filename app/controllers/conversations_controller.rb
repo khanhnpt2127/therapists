@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
       @users = User.where.not(id: current_user.id)
       @conversations = Conversation.for(current_user)
     else
-      @users = Host.where.not(id: current_host.id)
+      @users = User.all
       @conversations = Conversation.for(current_host)
     end
 
