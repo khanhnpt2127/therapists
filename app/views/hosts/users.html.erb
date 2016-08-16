@@ -1,5 +1,5 @@
 <% @users.each do |user| %>
   <%= user.name %>
-  <%= user.email %>
+  <%= link_to user.email, conversations_path(sender_id: current_host.id, recipient_id: user.id),method: 'post' %>
   <%= user.phone_number %>
 <% end %>

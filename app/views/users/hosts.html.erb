@@ -1,5 +1,11 @@
-<% @hosts.each do |host| %>
-  <%= host.name %>
-  <%= host.email%>
 
-<% end %>
+<div class="ui segment">
+  <h3>All Users</h3>
+  <div class="ui list">
+
+    <% @hosts.each do |host| %>
+      <%= host.name %> <%= link_to 'MEssage Host', conversations_path(sender_id: current_user.id, host_id: host.id), method: 'post' %>
+    <% end %>
+
+  </div>
+</div>

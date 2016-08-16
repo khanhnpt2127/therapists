@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def hosts
     @hosts = Host.all
+    @conversations = Conversation.all
   end
 
   def new
