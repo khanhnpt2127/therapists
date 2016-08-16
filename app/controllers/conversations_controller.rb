@@ -15,8 +15,14 @@ class ConversationsController < ApplicationController
 
   def create
     attrs = conversation_params    
-    attrs[:sender] = current_user || current_host
-    @conversation = Conversation.find_or_create_by(attrs)
+    user = current_user || current_host
+    
+    @conversation = Conversation.between(user, conversation_params)
+
+    if @conversation.blank?
+      attrs[:sender] = user
+      @conversation = Conversation.create(attrs)
+    end
 
     if @conversation.persisted?
       redirect_to conversation_messages_path(@conversation)
