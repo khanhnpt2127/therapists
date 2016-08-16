@@ -9,7 +9,8 @@
   </head>
 
   <body>
- 
+  <%= link_to 'Login as Host', host_login_path(pending: true), class: 'btn btn-primary' %>
+  <%= link_to 'Login as User', user_login_path(live: true), class: 'btn btn-primary' %>
     <% unless flash.empty? %>
 		<% flash.each do |key, value| %>
 			<div class="alert alert-danger"><%= value %></div>

@@ -19,6 +19,10 @@ resources :hosts do
   end
 end
 
+get 'host/login' => 'sessions#new'
+
+get 'user/login' => 'sessions#new'
+
 resources :books
 
 resources :surveys
