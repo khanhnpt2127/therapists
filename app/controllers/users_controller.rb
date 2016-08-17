@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def hosts
     @hosts = Host.all
+    @conversations = Conversation.all
   end
 
   def new
@@ -20,7 +21,9 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to new_survey_path, notice: "Account created successful"
+      session[:host_id] = nil
+
+      redirect_to root_path, notice: "Account created successful"
     else
       render 'new'
     end

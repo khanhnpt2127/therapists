@@ -3,16 +3,15 @@ class User < ApplicationRecord
   has_many :reviews, as: :reviewable
   has_many :books, dependent: :destroy
   has_many :messages
-  has_many :participations, class_name: 'Participant'
   has_many :conversations, through: :participations
-  
-  
+
+
   has_many :test,class_name: 'Message', foreign_key: :recipient_id
 
   def received_messages(page)
     Message.where(recipient: self).page(page)
   end
-  
+
   def sent_messages(page)
     Message.where(sender: self).page(page)
   end

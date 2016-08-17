@@ -11,6 +11,7 @@ class HostsController < ApplicationController
     @host = Host.new host_params
     if @host.save
       session[:host_id] = @host.id
+      session[:user_id] = nil
       redirect_to root_path, notice: "Host successfully created"
     else
       render 'new'

@@ -1,49 +1,42 @@
-<div class="ui segment">
+<div class=”ui segment”>
   <h3>Mailbox</h3>
-  <div class="ui list">
+  <div class=”ui list”>
     <div class=”item”>
-        <% @conversations.each do |conversation| %>
-          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-            <% if conversation.sender_id == current_user.id %>
-              <% if conversation.recipient_id.nil? %>
-                <% recipient = Host.find(conversation.host_id)%>
-              <% else %>
-                <% recipient = User.find(conversation.recipient_id) %>
-              <% end %>
-            <% else %>
-              <% recipient = User.find(conversation.sender_id) %>
-            <% end %>
-          <% end %>
-        <table class="table">
-          <thead class="thead thead-default">
-            <tr>
-              <th>Name</th>
-              <th>Content</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= link_to recipient.name, conversation_messages_path(conversation)%></td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
+     <% @conversations.each do |conversation| %>
+      
+      <table class="table">
+        <thead class="thead thead-default">
+          <tr>
+            <th>Name</th>
+            <th>Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to conversation.sender.name, conversation_messages_path(conversation)%></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <% end %>
   </div>
 </div>
+
 <div class="ui segment">
   <h3>All Users</h3>
   <div class="ui list">
     <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
         <div class=”item”>
-          <%= user.name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+          <%= user.name %> <%= link_to 'Message me!', conversations_path(recipient_id: user.id, recipient_type: user.class.name), method: 'post'%>
         </div>
-      <% end %>
+  
     <% end %>
+
+
     <h3>All Hosts</h3>
     <% @hosts.each do |host| %>
-      <%= host.name %> <%= link_to 'MEssage Host', conversations_path(sender_id: current_user.id, host_id: host.id), method: 'post' %>
+      <%= host.name %> <%= link_to 'Message Host', conversations_path( recipient_id: host.id, recipient_type: host.class.name), method: 'post' %>
     <% end %>
+
   </div>
 </div>
