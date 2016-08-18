@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
 
+  def new
+    @review = Review.new
+  end
+
   def create
     if current_user
       @review = current_user.reviews.new review_params
@@ -15,7 +19,7 @@ class ReviewsController < ApplicationController
       @review.host_id = params[:host_id]
 
     @review.save!
-    redirect_to @reviewable, notice: "Your comment was posted"
+    redirect_to :back, notice: "Your comment was posted"
   end
 
   private

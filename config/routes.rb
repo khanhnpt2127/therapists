@@ -8,6 +8,10 @@ resources :users do
     end
 end
 
+resources :reviews do
+  resources :reviews
+end
+
 resources :conversations do
   resources :messages
 end

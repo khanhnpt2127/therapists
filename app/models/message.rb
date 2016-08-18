@@ -18,4 +18,14 @@ class Message < ApplicationRecord
     read_at
   end
 
+  def survey_name
+    case user
+    when User
+      user.survey.name
+    when Host
+      ''
+    else
+      raise "who are you??"
+    end
+  end
 end
