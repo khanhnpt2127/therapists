@@ -1,31 +1,37 @@
 class ReviewsController < ApplicationController
-
+  before_action :find_reviewable
   def new
     @review = Review.new
   end
 
   def create
-    if current_user
-      @review = current_user.reviews.new review_params
-      @review.reviewable = current_user
-      @review.user = current_user if current_user
-    else
-      @review = current_host.reviews.new review_params
-      @review.reviewable = current_host
-      @review.host_id = current_host if current_host
-
+    @review = @reviewable.reviews.new review_params
+    if @review.save!
+      redirect_to :back, notice: "Your comment was posted"
     end
-      @review.user_id = params[:user_id]
-      @review.host_id = params[:host_id]
-
-    @review.save!
-    redirect_to :back, notice: "Your comment was posted"
   end
 
+  def destroy 
+    user = current_user || current_host
+    @review = Review.find(params[:id])
+    if @review.destroy
+      redirect_to user_path(user)
+    else
+      redirect_to user_path(user), notice: "Cannot delete Comments"
+    end
+  end
+  
   private
 
   def review_params
-      params.require(:review).permit(:content)
+      params.require(:review).permit(:content, :user_id, :user_type)
   end
+  
+  def find_reviewable
+    @reviewable = Review.find(params[:review_id]) if params[:review_id] 
+    @reviewable = User.find(params[:user_id]) if params[:user_id]
+    @reviewable = Host.find(params[:host_id]) if params[:host_id]
 
+  
+  end
 end

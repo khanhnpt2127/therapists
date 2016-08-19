@@ -71,12 +71,10 @@ ActiveRecord::Schema.define(version: 20160817114445) do
     t.string   "reviewable_type"
     t.integer  "reviewable_id"
     t.text     "content"
-    t.integer  "user_id"
-    t.integer  "host_id"
+    t.integer  "user_id",         null: false
+    t.string   "user_type",       null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "ancestry"
-    t.index ["ancestry"], name: "index_reviews_on_ancestry", using: :btree
   end
 
   create_table "surveys", force: :cascade do |t|

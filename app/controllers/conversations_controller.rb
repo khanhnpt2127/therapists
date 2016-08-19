@@ -16,7 +16,7 @@ class ConversationsController < ApplicationController
   def create
     attrs = conversation_params    
     user = current_user || current_host
-    
+
     @conversation = Conversation.between(user, conversation_params)
 
     if @conversation.blank?
@@ -30,6 +30,15 @@ class ConversationsController < ApplicationController
       # Show error...
       flash[:error] = 'Cannot create conversation'
       redirect_to '/'
+    end
+  end
+
+  def destroy
+    @conversation = Conversation.find(params[:id])
+    if @conversation.destroy
+      redirect_to conversations_path, notice: "Conversations deleted successful"
+    else
+      redirect_to conversation_messages_path(@conversation), notice: "Cannot delete conversation"
     end
   end
 
