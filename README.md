@@ -23,10 +23,9 @@ The following **required** functionality is complete:
 * [X] The survey must be filled before user can see the list of therapists.
 	**After filling out the survey:**
 * [X] User can see a list of potential psychologists/therapist who suits their needs.
-* [ ] User can send messages to therapists. Messages are always free, and must be answered in at least 24 hours.
-* [ ] With each therapist, user can send at most two 600-word messages. 
-* [ ] User can have a video call with at most 3 therapists before deciding who’s best.
-* [ ] When users have chosen one that suits them best, they will pay a fee for each session. 
+* [X] User can send messages to therapists. Messages are always free, and must be answered in at least 24 hours.
+* [X] With each therapist, user can send at most two 600-word messages. 
+* [X] When users have chosen one that suits them best, they will pay a fee for each session. 
 * [X] User can recommend therapists they like and write reviews.
 
 #### Therapist
