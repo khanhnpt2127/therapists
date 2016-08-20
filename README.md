@@ -40,7 +40,7 @@ The following **required** functionality is complete:
 
 * [ ] Reddit-like
 * [ ] User can post their story.
-* [ ] Other user can comment.
+* [X] Other user can comment.
 * [ ] Users can upvote and downvote stories from each user.
 
 The following **optional** functionality is complete:
