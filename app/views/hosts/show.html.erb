@@ -41,29 +41,18 @@
     <div class="container">
         <section style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
-                <div class="col-md-4">
-                    <img src="assets/img/250x250.png" class="img-rounded img-responsive" />
-                    <br />
-                    <br />
-                    <div class="card">
-                      <div class="card-block">
-                        <h4 class="card-title" style="text-align:center">Name: <%= @host.name %></h4>
-                        <h4 class="card-body" style="text-align:center">
-                          Email: <%= @host.email %>
-                        </h4>
-                      </div>
-                    </div>
-                    <br>
-                    <%= link_to 'Update information', edit_host_path, class: 'btn btn-success' %>
-                    <br /><br/>
-                </div>
+                
                 <div class="col-md-8">
                     <div class="alert alert-info">
-                        <h2>Profile Bio </h2>
-                        <h4>For Therapist </h4>
-                        <p>
-                          
-                        </p>
+                    <img src="assets/img/250x250.png" class="img-rounded img-responsive" />
+                        <h2> <%= @host.name %>'s Profile </h2>
+                        <h4> Email: <%= @host.email %></h4>
+                        <h4> About <%= @host.name %>: </h4>
+                        <h5> <%= @host.description %> </h5>
+                    </div>
+                    <div>
+                        <%= link_to "Send #{@host.name} a message!", conversations_path(recipient_id: @host.id, recipient_type: @host.class.name), method: 'post', class: 'btn btn-success' %> 
+                        <br><br>    
                     </div>
                     <div >
                         <a href="#" class="btn btn-social btn-facebook">
@@ -84,7 +73,7 @@
         </ection>
         <!-- SECTION END -->
     </div>
-    <!-- CONATINER END -->
+    <!-- CONTAINER END -->
 
     <!-- REQUIRED SCRIPTS FILES -->
     <!-- CORE JQUERY FILE -->

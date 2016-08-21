@@ -6,6 +6,7 @@
 
 <% if current_host %>
 <h1> Welcome, therapist </h1>
-<%= link_to 'View your profile', host_path(:id => current_host.id)%> <br>
-<%= link_to 'View your patients', users_host_path(:id => current_host.id) %>
+<%= link_to 'View your profile', host_path(:id => current_host.id), class: 'btn btn-success'%> <br>
+<%= link_to 'Update information', edit_host_path(:id => current_host.id), class: 'btn btn-success'%> <br>
+<%= link_to 'View your patients', users_host_path(:id => current_host.id), class: 'btn btn-success' %>
 <% end %>
