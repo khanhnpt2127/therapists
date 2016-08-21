@@ -40,29 +40,13 @@
     <div class="container">
         <section style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
-                <div class="col-md-4">
-                    <img src="PLEASE ADD CARRIERWAVE" class="img-rounded img-responsive" />
-                    <br />
-                    <br />
-                    <div class="card">
-                      <div class="card-block">
-                        <h4 class="card-title" style="text-align:center">Name: <%= @user.name %></h4>
-                        <h4 class="card-body" style="text-align:center">
-                          Email: <%= @user.email %>
-                        </h4>
-                      </div>
-                    </div>
-                    <br>
-                    <a href="#" class="btn btn-success">Update Details</a><br>
-                    <%= link_to 'Update your conditions', new_survey_path, class: 'btn btn-success' %>
-                    <br /><br/>
-                </div>
                 <div class="col-md-8">
                     <div class="alert alert-info">
-                        <h2>Profile Bio </h2>
-                        <h4>For Patients </h4>
+                        <img src="PLEASE ADD CARRIERWAVE" class="img-rounded img-responsive" />
+                        <h2> <%= @user.name %>'s Profile </h2>
                         <p>
-                        Name: <br>
+                        Name: <%= @user.name %> <br>
+                        Email: <%= @user.email %> <br>
                         Age: <br>
                         Occupation: <br>  
                         </p>
