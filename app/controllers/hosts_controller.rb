@@ -18,13 +18,16 @@ class HostsController < ApplicationController
     end
   end
   
+  def edit
+    
+  end
+
   def users
     @users = User.all
   end
   
   def show
     @host = Host.find(params[:id])
-     
   end
 
 

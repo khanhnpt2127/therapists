@@ -1,1 +1,11 @@
-<h1> Hello World </h1>
+<% if current_user %>
+<h1> Welcome, user </h1>
+<%= link_to 'View your profile', user_path(:id => current_user.id)%> <br>
+<%= link_to 'View list of available therapist', hosts_user_path(:id => current_user.id) %>
+<% end %>
+
+<% if current_host %>
+<h1> Welcome, therapist </h1>
+<%= link_to 'View your profile', host_path(:id => current_host.id)%> <br>
+<%= link_to 'View your patients', users_host_path(:id => current_host.id) %>
+<% end %>

@@ -1,20 +1,3 @@
-
-<% if false %>
-  <%= form_tag sessions_path, class: 'form' do %>
-    <div class="form-group">
-      <label>Email</label>
-      <%= text_field_tag :email, nil ,class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <label>Password</label>
-      <%= password_field_tag :password, nil, class: 'form-control' %>
-    </div>
-
-    <%= submit_tag "Submit", class: 'btn btn-success' %> 
-  <% end %>
-<% end %>
-
 <div class="container">
     <div class="login-container">
         <div id="output"></div>
@@ -41,13 +24,16 @@
 
 
         <div class="form-box" style="margin-top: 20px;">
-            <form action="" method="">
-                <input name="user" type="text" placeholder="username/email">
-                <input type="password" placeholder="password">
-                <button class="btn btn-info btn-block login" type="submit">Login</button>
-            </form>
+            <%= form_tag sessions_path, class: 'form' do %>
+                <form action="" method="">
+                    <%= text_field_tag :email, nil ,class: 'form-control' %>
+                    <%= password_field_tag :password, nil%>
+                    <%= submit_tag "Submit" %>  
+                </form>
+            <% end %>
         </div>
 
-        <a href="#">Sign Up! </a>
+        <a> <%= link_to 'Sign up as user!', new_user_path %> </a><br>
+        <a> <%= link_to 'Sign up as therapist!', new_host_path %> </a>
     </div>
 </div>

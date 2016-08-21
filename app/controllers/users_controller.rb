@@ -6,6 +6,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    #if current_user
+    #  if current_user.email != @user.email 
+     #   redirect_to root_path
+     # end
+    #else
+   #   redirect_to root_path
+    #end     
   end
 
   def hosts
@@ -23,10 +30,14 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       session[:host_id] = nil
 
-      redirect_to root_path, notice: "Account created successful"
+      redirect_to root_path, notice: "Account created successfully"
     else
       render 'new'
     end
+  end
+
+  def edit
+
   end
 
   private

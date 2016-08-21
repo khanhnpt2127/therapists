@@ -9,13 +9,24 @@
   </head>
 
   <body>
-  <%= link_to 'Login as Host', host_login_path(pending: true), class: 'btn btn-primary' %>
-  <%= link_to 'Login as User', user_login_path(live: true), class: 'btn btn-primary' %>
-    <% unless flash.empty? %>
-		<% flash.each do |key, value| %>
-			<div class="alert alert-danger"><%= value %></div>
-		<% end %>
-  <% end %> 
+  <%= link_to 'Home', root_path, class: 'btn btn-primary' %>  
+  <% if current_host %>
+    <%= link_to "Log out #{current_host.email}", logout_path, class: 'btn btn-primary' %>
+  
+  <% elsif current_user  %>
+    <%= link_to "Log out #{current_user.email}", logout_path, class: 'btn btn-primary' %> 
+  <% end %>
+
+  <% else %>  
+    <%= link_to 'Login as Host', host_login_path(pending: true), class: 'btn btn-primary' %>
+    <%= link_to 'Login as User', user_login_path(pending: false), class: 'btn btn-primary' %>
+      <% unless flash.empty? %>
+  		<% flash.each do |key, value| %>
+  			<div class="alert alert-danger"><%= value %></div>
+  		<% end %>
+    <% end %>
+
+   
   <%=yield %>
   </body>
 </html>
