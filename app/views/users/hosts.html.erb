@@ -1,4 +1,5 @@
 <h3>All Hosts</h3>
 <% @hosts.each do |host| %>
-	<%= host.name %> <%= link_to 'Message Host', conversations_path( recipient_id: host.id, recipient_type: host.class.name), method: 'post' %>
+	<%= link_to host.name, host_path(:id => host.id)%>
+	<%= link_to 'Message Host', conversations_path( recipient_id: host.id, recipient_type: host.class.name), method: 'post' %> <br>
 <% end %>
