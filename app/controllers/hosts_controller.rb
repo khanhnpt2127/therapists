@@ -19,7 +19,15 @@ class HostsController < ApplicationController
   end
   
   def edit
-    
+      @host = Host.find(params[:id])
+  end
+
+  def update
+    @host = Host.find(params[:id])
+    if @host.update host_params
+      redirect_to root_path, notice: "Information updated"
+    else render 'edit' 
+    end  
   end
 
   def users
@@ -34,6 +42,6 @@ class HostsController < ApplicationController
   private
 
   def host_params
-    params.require(:host).permit(:name, :password, :email, :phone_number)
+    params.require(:host).permit(:name, :password, :email, :phone_number, :description, :img_link)
   end
 end
