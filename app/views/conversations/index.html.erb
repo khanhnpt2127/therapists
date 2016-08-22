@@ -2,26 +2,31 @@
   <h3>Mailbox</h3>
   <div class=”ui list”>
     <div class=”item”>
-     <% @conversations.each do |conversation| %>
-      
-      <table class="table">
-        <thead class="thead thead-default">
-          <tr>
-            <th>Name</th>
-            <th>Content</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= link_to conversation.sender.name, conversation_messages_path(conversation)%></td>
-          </tr>
-         <tr>
-            <%= link_to conversation.messages.last.body %>
-          </tr>
-          
-        </tbody>
-      </table>
-    </div>
+      <% @conversations.each do |conversation| %>
+
+        <table class="table">
+          <thead class="thead thead-default">
+            <tr>
+              <th>Name</th>
+              <th>Content</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= link_to conversation.sender.name, conversation_messages_path(conversation)%></td>
+              <td>
+              <% if conversation.messages.last.body.nil?%>
+                <%= "No current message" %>
+              <% else %>
+                <%= link_to conversation.messages.last.body %>
+              <% end %>
+              </td>
+              <td> <%= link_to "Delete Conversation",conversation_path(conversation), :confirm => "Are you sure?", :method => :delete %> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     <% end %>
   </div>
 </div>
@@ -30,10 +35,10 @@
   <h3>All Users</h3>
   <div class="ui list">
     <% @users.each do |user| %>
-        <div class=”item”>
-          <%= user.name %> <%= link_to 'Message me!', conversations_path(recipient_id: user.id, recipient_type: user.class.name), method: 'post'%>
-        </div>
-  
+      <div class=”item”>
+        <%= user.name %> <%= link_to 'Message me!', conversations_path(recipient_id: user.id, recipient_type: user.class.name), method: 'post'%>
+      </div>
+
     <% end %>
 
 

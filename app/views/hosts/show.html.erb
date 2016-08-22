@@ -76,8 +76,14 @@
                             <i class="fa fa-linkedin"></i>&nbsp; Linkedin </a>
                         </div>
 
-                        <%= render partial: 'reviews/reviews', locals: {reviewable: @host } %>
-                        <%= render partial: 'reviews/form', locals: {reviewable: @host} %>
+                        <%= render partial: 'reviews/form', collection: @host.reviews, as: :review %>
+                     <%= form_for [@host,Review.new] do |f| %>
+                        <%= f.text_area :content, class: 'form-control' %>
+                        <% user = current_user || current_host %>
+                        <%= f.text_field :user_id, value: user.id , type: 'hidden' %>
+                        <%= f.text_field :user_type, value: user.class.name, type: 'hidden' %>
+                        <%= f.submit "SUBMIT" %>
+                        <% end %>
 
 
 
