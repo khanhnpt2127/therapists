@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+<h3>Reviews </h3>
+<% Review.where(host_id: @host.id).each do |review| %>
+  <div class="well">
+    <%= review.reviewable.name %>
+    <%= review.content %>
+    <%= review.created_at %>
+  </div>
+<% end %>
+=======
 <li>
   <%= review.user.name %>
   <%= review.content %> 
@@ -16,3 +26,4 @@
   </ul>
 
 </li>
+>>>>>>> master
