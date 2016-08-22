@@ -1,5 +1,7 @@
+
 <% @books.each do |book| %>
   <%= book.name %>
   <%= book.user.name %>
   <%= book.host.name %>
+  <%= book.start_at %>
 <% end %>

@@ -7,9 +7,9 @@ class BooksController < ApplicationController
 
   def index
     if current_user
-      @books = Book.where(user_id: current_user)
+      @books = Book.where(user_id: current_user.id)
     else
-      @books = Book.where(host_id: current_host)
+      @books = Book.where(host_id: current_host.id).delete_expired_books
     end
   end
   
@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:name, :location, :description, :user_id, :host_id )
+    params.require(:book).permit(:name, :location, :description, :user_id, :host_id, :start_at, :end_at )
   end
 
 end

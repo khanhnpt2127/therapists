@@ -23,6 +23,18 @@
       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
    <% else %>
       <%= f.text_field :host_id, value: current_host.id, type: "hidden" %>
-   <% end %>
-<%= f.submit %>
-<% end %>
+    <% end %>
+
+    <%= f.text_field :start_at, placeholder: "Choose Date Time", class: "datepicker" %>
+    <%= f.text_field :end_at, placeholder: "Choose Time", class: "timepicker" %>
+    <%= f.submit %>
+  <% end %>
+
+  <script>
+  $('.datepicker').pickadate();
+  $('.timepicker').pickatime();
+  </script>
+
+
+
+  

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817114445) do
+ActiveRecord::Schema.define(version: 20160822024253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20160817114445) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.integer  "host_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.index ["host_id"], name: "index_books_on_host_id", using: :btree
     t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
