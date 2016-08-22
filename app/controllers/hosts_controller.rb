@@ -1,6 +1,6 @@
 class HostsController < ApplicationController
   before_action :check_cookie!
-  before_action :authenticate_host!
+  
   
   def new
     @host= Host.new

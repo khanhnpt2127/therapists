@@ -3,7 +3,13 @@
 <% end %>
 <% if @survey.nil? %>
 <% else %>
-<h3><%= @survey.name %></h3>
+  <h3><%= @survey.name %></h3>
+  <% for question in @survey.questions  %>
+    <%= h question.content %>
+    <% for answer in question.answers %>
+      <%= h answer.content %>
+    <% end %>
+  <% end %>
 
 <% end %>
 <div class='ui'>
@@ -29,7 +35,7 @@
   <div class=”field”>
     <%= f.text_area :body, class: 'form-control' %>
   </div>
-  
+
   <% user = current_user || current_host %>
   <%= f.text_field :user_id, value: user.id, type: 'hidden' %>
   <%= f.text_field :user_type, value: user.class.name, type: 'hidden' %>

@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
- 
-  
+  before_action :authenticate_user!
+
   def index
     if current_user
       @users = User.where.not(id: current_user.id)
@@ -9,8 +9,11 @@ class ConversationsController < ApplicationController
       @users = User.all
       @conversations = Conversation.for(current_host)
     end
-
-    @hosts = Host.all
+    if current_host
+      @hosts = Host.where.not(id: current_host.id)
+    else
+      @hosts = Host.all
+    end
   end
 
 
@@ -49,5 +52,5 @@ class ConversationsController < ApplicationController
   def conversation_params
     params.permit(:recipient_id, :recipient_type)
   end
- 
+
 end
