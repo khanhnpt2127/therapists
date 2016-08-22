@@ -6,7 +6,11 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    if current_user
+      @books = Book.where(user_id: current_user)
+    else
+      @books = Book.where(host_id: current_host)
+    end
   end
   
   def create
