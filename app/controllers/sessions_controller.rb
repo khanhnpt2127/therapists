@@ -4,11 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:live] = true
-      if @host = Host.find_by(email: params[:email])
-          if @host.authenticate(params[:password])
-            session[:host_id] = @host.id
-            session[:user_id] = nil
+      if @user = User.find_by(email: params[:email])
+          if @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            session[:host_id] = nil
             return redirect_to root_path
           else
             return redirect_to root_path
@@ -17,7 +16,6 @@ class SessionsController < ApplicationController
         return redirect_to root_path
       end
     end
-  end
 
 
 
@@ -26,4 +24,4 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-end
+  end

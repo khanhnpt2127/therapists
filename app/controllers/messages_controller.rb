@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
     before_action :get_conversation 
+    before_action :secure_conversation
     def index
 
       @messages = @conversation.messages.order(created_at: :asc)
@@ -49,9 +50,14 @@ class MessagesController < ApplicationController
     end
 
     def secure_conversation
+      if current_user
+        user = current_user.id
+      end
+      if current_host
+        user = current_host.id
+      end
 
-      current_user_id = current_user.id
-      if current_user_id != @conversation.sender_id && current_user_id != @conversation.recipient_id
+      if user != @conversation.sender_id && current_user_id != @conversation.recipient_id
         redirect_to root_path
 
       end

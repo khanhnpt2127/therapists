@@ -17,8 +17,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_cookie!
+    if session[:host_id].present? && session[:user_id].present?
+      redirect_to root_path, notice: "Please clear your cookies"
+    end
+  end
+
   def authenticate_user!
-    redirect_to new_user_path unless current_user
+    redirect_to new_user_path unless current_user || current_host
+  end
+
+  def authenticate_host!
+    redirect_to new_host_path unless current_host
   end
 
 end
