@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def hosts
     @hosts = Host.all
     @conversations = Conversation.all
+    @review = Review.new
   end
 
   def new
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :phone_number, :password)
+    params.require(:user).permit(:name, :description ,:email, :phone_number, :password)
   end
 
 end

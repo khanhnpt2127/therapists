@@ -75,9 +75,10 @@
                         <a href="#" class="btn btn-social btn-linkedin">
                             <i class="fa fa-linkedin"></i>&nbsp; Linkedin </a>
                     </div>
-                    <%= render partial: 'users/reviews', locals: {reviewable: @user } %>
-                    <%= render partial: 'users/form', locals: {reviewable: @user} %>
-                </div>
+                    
+                      <%= render partial: 'reviews/reviews', locals: {reviewable: @user } %>
+                      <%= render partial: 'reviews/form', locals: {reviewable: @user} %>
+                  </div>
             </div>
             <!-- ROW END -->
 

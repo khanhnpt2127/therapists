@@ -15,6 +15,10 @@
           <tr>
             <td><%= link_to conversation.sender.name, conversation_messages_path(conversation)%></td>
           </tr>
+         <tr>
+            <%= link_to conversation.messages.last.body %>
+          </tr>
+          
         </tbody>
       </table>
     </div>

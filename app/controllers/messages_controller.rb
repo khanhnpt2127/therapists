@@ -1,10 +1,7 @@
 class MessagesController < ApplicationController
-    
-   
     before_action :get_conversation 
-   
-
     def index
+
       @messages = @conversation.messages.order(created_at: :asc)
       if @messages.length > 10
          @over_ten = true
@@ -16,6 +13,17 @@ class MessagesController < ApplicationController
          @messages = @conversation.messages
       end
       @message = @conversation.messages.new
+
+      if current_host
+        user = 
+          if @conversation.recipient.is_a?(User)
+            @conversation.recipient
+          elsif @conversation.sender.is_a?(User)
+            @conversation.sender
+          end
+
+        @survey = user.try(:survey)
+      end
     end
 
     def new
