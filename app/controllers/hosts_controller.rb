@@ -7,6 +7,7 @@ class HostsController < ApplicationController
     Rails.logger.info request.env["HTTP_COOKIE"]
   end
   
+  
   def create
     @host = Host.new host_params
     if @host.save

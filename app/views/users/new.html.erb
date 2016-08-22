@@ -1,9 +1,52 @@
+<<<<<<< HEAD
 <h1>Create a new user account</h1>
 
 <%= form_for @user do |f| %>
 
 <% unless @user.errors.empty? %>
 <%= @user.errors.full_messages.to_sentence %>
+=======
+<%= form_tag users_path do %>
+
+  <div class="form-group row">
+    <label class="col-xs-2 col-form-label">Username</label>
+    <div class="col-xs-10">
+      <input type="text" name="user[name]" class="form-control" >
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-xs-2 col-form-label">Email</label>
+    <div class="col-xs-10">
+      <input type="email" name="user[email]" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-xs-2 col-form-label">Phone Number</label>
+    <div class="col-xs-10">
+      <input type="tel" name="user[phone_number]" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-xs-2 col-form-label">Password</label>
+    <div class="col-xs-10">
+     <input type="password" name="user[password]" class="form-control">
+    </div>
+  </div>
+   
+  <div class="form-group row">
+    <label class="col-xs-2 col-form-label">Description</label>
+    <div class="col-xs-10">
+     <input type="text" name="user[description]" class="form-control">
+    </div>
+  </div>
+   
+
+
+  <button type="submit" class="btn btn-primary">Done</button>
+>>>>>>> master
 <% end %>
 
 <%= f.label :name %>

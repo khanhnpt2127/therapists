@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h3>Reviews </h3>
 <% Review.where(host_id: @host.id).each do |review| %>
   <div class="well">
@@ -6,3 +7,23 @@
     <%= review.created_at %>
   </div>
 <% end %>
+=======
+<li>
+  <%= review.user.name %>
+  <%= review.content %> 
+  <small>Submitted <%= time_ago_in_words(review.created_at) %> ago</small>
+
+  <%= form_for [review, Review.new] do |f| %>
+      <%= f.text_area :content, placeholder: "Add a Reply" %><br/>
+      <% user = current_user || current_host %>
+	   <%= f.text_field :user_id, value: user.id , type: 'hidden' %>
+	   <%= f.text_field :user_type, value: user.class.name, type: 'hidden' %>
+      <%= f.submit "Reply"  %>
+      <% end %>
+
+  <ul>
+      <%= render partial: 'reviews/form', collection: review.reviews, as: :review %>
+  </ul>
+
+</li>
+>>>>>>> master

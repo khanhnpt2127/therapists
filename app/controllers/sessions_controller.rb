@@ -4,13 +4,19 @@ class SessionsController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
       if params[:pending] = true 
         if @host = Host.find_by(email: params[:email])
+=======
+    if params[:live] = true
+      if @host = Host.find_by(email: params[:email])
+>>>>>>> master
           if @host.authenticate(params[:password])
             session[:host_id] = @host.id
             session[:user_id] = nil
             return redirect_to root_path
           else
+<<<<<<< HEAD
             return redirect_to host_login_path(pending: true), notice: "Password is wrong"
           end          
         else
@@ -28,6 +34,9 @@ class SessionsController < ApplicationController
             return redirect_to root_path
           else
             redirect_to user_login_path(pending: false), notice: "Password is wrong"
+=======
+            return redirect_to root_path
+>>>>>>> master
           end
         else
           return redirect_to user_login_path(pending: false), notice: "Email does not exist"

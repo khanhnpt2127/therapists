@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :reviews, as: :reviewable
   has_many :books, dependent: :destroy
   has_many :messages
+  has_one  :survey
   has_many :conversations, through: :participations
 
 

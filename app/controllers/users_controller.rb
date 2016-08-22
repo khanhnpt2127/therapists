@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
     #if current_user
     #  if current_user.email != @user.email 
      #   redirect_to root_path
@@ -13,11 +14,15 @@ class UsersController < ApplicationController
     #else
    #   redirect_to root_path
     #end     
+=======
+    @user = User.find(params[:id])
+>>>>>>> master
   end
 
   def hosts
     @hosts = Host.all
     @conversations = Conversation.all
+    @review = Review.new
   end
 
   def new
@@ -55,7 +60,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :phone_number, :password)
+    params.require(:user).permit(:name, :description ,:email, :phone_number, :password)
   end
 
 end

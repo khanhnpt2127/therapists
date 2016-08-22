@@ -22,6 +22,6 @@ end
   private
 
   def survey_params
-    params.require(:survey).permit(:content, :user_id)
+    params.require(:survey).permit(:name, :user_id)
   end
 end

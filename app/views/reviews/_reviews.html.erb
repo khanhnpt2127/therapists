@@ -2,6 +2,8 @@
   <div class="form-group">
     <%= f.text_area :content, class: "form-control", placeholder: "Add a Review" %>
   </div>
-
+	<% user = current_user || current_host %>
+	<%= f.text_field :user_id, value: user.id , type: 'hidden' %>
+	<%= f.text_field :user_type, value: user.class.name, type: 'hidden' %>
   <%= f.submit "Submit" %>
 <% end %>
