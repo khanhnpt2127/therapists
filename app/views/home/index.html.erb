@@ -1,1 +1,16 @@
-<h1> Hello World </h1>
+<% if current_user %>
+<h1> Welcome, <%= current_user.name %> </h1>
+<%= link_to 'View your profile', user_path(:id => current_user.id), class: 'btn btn-success'%> <br>
+<%= link_to 'Update information', edit_user_path(:id => current_user.id), class: 'btn btn-success'%> <br>
+<%= link_to 'Tell your doctors about your condition', new_survey_path, class: 'btn btn-success' %>
+<%= link_to 'Consult a therapist', hosts_user_path(:id => current_user.id), class: 'btn btn-success' %>
+<h5>Make an appointment now</h5>
+<% end %>
+
+<% if current_host %>
+<h1> Welcome, <%= current_host.name %> </h1>
+<%= link_to 'View your profile', host_path(:id => current_host.id), class: 'btn btn-success'%> <br>
+<%= link_to 'Update information', edit_host_path(:id => current_host.id), class: 'btn btn-success'%> <br>
+<%= link_to 'Check your inbox!', users_host_path(:id => current_host.id), class: 'btn btn-success' %>
+<h5>Your appointments today:</h5>
+<% end %>

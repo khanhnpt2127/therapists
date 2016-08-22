@@ -17,31 +17,30 @@ The following **required** functionality is complete:
 
 #### User
 
-* [ ] User can sign up by providing their email, password, and name. 
-* [ ] User can login using an email and password. 
-* [ ] User must fill out a survey before being matched with potential therapists.
-* [ ] The survey must be filled before user can see the list of therapists.
+* [X] User can sign up by providing their email, password, and name. 
+* [X] User can login using an email and password. 
+* [X] User must fill out a survey before being matched with potential therapists.
+* [X] The survey must be filled before user can see the list of therapists.
 	**After filling out the survey:**
-* [ ] User can see a list of potential psychologists/therapist who suits their needs.
-* [ ] User can send messages to therapists. Messages are always free, and must be answered in at least 24 hours.
-* [ ] With each therapist, user can send at most two 600-word messages. 
-* [ ] User can have a video call with at most 3 therapists before deciding who’s best.
-* [ ] When users have chosen one that suits them best, they will pay a fee for each session. 
-* [ ] User can recommend therapists they like and write reviews.
+* [X] User can see a list of potential psychologists/therapist who suits their needs.
+* [X] User can send messages to therapists. Messages are always free, and must be answered in at least 24 hours.
+* [X] With each therapist, user can send at most two 600-word messages. 
+* [X] When users have chosen one that suits them best, they will pay a fee for each session. 
+* [X] User can recommend therapists they like and write reviews.
 
 #### Therapist
 
-* [ ] Must have credentials.
-* [ ] Can see a list of potential users.
-* [ ] With each user, a therapist can see his or her message and the survey result.
-* [ ] Therapist can set an appointment with user.
+* [X] Must have credentials.
+* [X] Can see a list of potential users.
+* [X] With each user, a therapist can see his or her message and the survey result.
+* [X] Therapist can set an appointment with user.
 * [ ] Therapist can answer a user' question.
 
 #### The community
 
 * [ ] Reddit-like
 * [ ] User can post their story.
-* [ ] Other user can comment.
+* [X] Other user can comment.
 * [ ] Users can upvote and downvote stories from each user.
 
 The following **optional** functionality is complete:

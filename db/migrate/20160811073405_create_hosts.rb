@@ -4,6 +4,7 @@ class CreateHosts < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :password_digest
       t.string :email
+      t.string :description
       t.string :phone_number
       t.string :document
       t.string :img_link
