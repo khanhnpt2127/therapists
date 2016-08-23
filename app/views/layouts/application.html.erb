@@ -11,6 +11,8 @@
   </head>
 
   <body>
+
+<div class="container">
   <%= link_to 'Home', root_path, class: 'btn btn-primary' %>  
   <% if current_host %>
     <%= link_to "Log out #{current_host.email}", logout_path, class: 'btn btn-primary' %>
@@ -27,6 +29,8 @@
   			<div class="alert alert-danger"><%= value %></div>
   		<% end %>
     <% end %>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -43,7 +47,7 @@
         <%= link_to 'View your profile', host_path(:id => current_host.id), class: 'btn btn-success'%> <br>
         <%= link_to 'Update information', edit_host_path(:id => current_host.id), class: 'btn btn-success'%> <br>
         <%= link_to 'Check your inbox!', users_host_path(:id => current_host.id), class: 'btn btn-success' %>
-        <%= link to 'Your appointments today', book_path(:id => current_host.id), class: 'btn btn-success' %>
+        <%= link_to 'Your appointments today', book_path(:id => current_host.id), class: 'btn btn-success' %>
       <% end %>
     </div>
     <div class="col-md-8">
