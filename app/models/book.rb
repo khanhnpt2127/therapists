@@ -7,8 +7,6 @@ class Book < ApplicationRecord
     if (Book.where("start_at < ?", Time.current-7.days))
       Book.where("start_at < ?" , Time.current-7.days).destroy_all
       Book.where("start_at > ?", Time.current-7.days)
-    else
-      Book.where("start_at > ?",Time.current-7.days)
     end
   end
 
