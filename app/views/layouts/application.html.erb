@@ -27,8 +27,31 @@
   			<div class="alert alert-danger"><%= value %></div>
   		<% end %>
     <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <% if current_user %>
+        <%= link_to 'View your profile', user_path(:id => current_user.id), class: 'btn btn-success'%> <br>
+        <%= link_to 'Update information', edit_user_path(:id => current_user.id), class: 'btn btn-success'%> <br>
+        <%= link_to 'Tell your doctors about your condition', new_survey_path, class: 'btn btn-success' %>
+        <%= link_to 'Consult a therapist', hosts_user_path(:id => current_user.id), class: 'btn btn-success' %>
+        <%= link_to 'Make an appointment now', new_book_path, class: 'btn btn-success' %>
+        <%= link_to 'View your appointments', book_path(:id => current_user.id), class: 'btn btn-success' %> 
+      <% end %>
 
-   
-  <%=yield %>
+      <% if current_host %>
+        <%= link_to 'View your profile', host_path(:id => current_host.id), class: 'btn btn-success'%> <br>
+        <%= link_to 'Update information', edit_host_path(:id => current_host.id), class: 'btn btn-success'%> <br>
+        <%= link_to 'Check your inbox!', users_host_path(:id => current_host.id), class: 'btn btn-success' %>
+        <%= link to 'Your appointments today', book_path(:id => current_host.id), class: 'btn btn-success' %>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <%=yield %>
+    </div>
+    
+  </div>
+</div>
+    
   </body>
 </html>
