@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<h1>Create a new user account</h1>
-
-<%= form_for @user do |f| %>
-
-<% unless @user.errors.empty? %>
-<%= @user.errors.full_messages.to_sentence %>
-=======
 <%= form_tag users_path do %>
 
   <div class="form-group row">
@@ -46,9 +38,8 @@
 
 
   <button type="submit" class="btn btn-primary">Done</button>
->>>>>>> master
 <% end %>
-
+<% if false   %>
 <%= f.label :name %>
 <%= f.text_field :name, placeholder: "Enter name" %>     
 
@@ -62,7 +53,6 @@
 <%= f.password_field :password, placeholder: "Enter password" %>  
 
 <%= f.submit %>
-
 <% end %>
 
 <form action="/users" method="post">

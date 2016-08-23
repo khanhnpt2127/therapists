@@ -7,17 +7,14 @@ class UsersController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
-    #if current_user
+   #if current_user
     #  if current_user.email != @user.email 
      #   redirect_to root_path
      # end
     #else
    #   redirect_to root_path
     #end     
-=======
     @user = User.find(params[:id])
->>>>>>> master
   end
 
   def hosts
