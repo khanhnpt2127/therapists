@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Therapist</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="login-container">
+        <div id="output"></div>
+        <h3>Therapist</h3>
+        <img class="avatar" align="center" src="images/sample_avarta.jpg" alt="" class="img-circle"
+             style=" width: 100px; height: 100px;">
+        <hr style="color: dimgrey !important;margin-top: 10px; margin-bottom: 10px">
+
+        <!-- Facebook -->
+        <a href="#" target="_blank">
+            <img src="images/facebook.png" alt="Facebook" />
+        </a>
+        <br>
+        <br>
+        <!-- Google+ -->
+        <a href="#" >
+            <img src="images/google.png" alt="Google" />
+        </a>
+        <br>
+        <br>
+        <a href="#" >
+            <img src="images/twister.png" alt="Google" />
+        </a>
+
+
+        <div class="form-box" style="margin-top: 20px;">
+            <form action="" method="">
+                <input name="user" type="text" placeholder="username/email">
+                <input type="password" placeholder="password">
+                <button class="btn btn-info btn-block login" type="submit">Login</button>
+            </form>
+        </div>
+
+        <a href="#">Sign Up! </a>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        var textfield = $("input[name=user]");
+        $('button[type="submit"]').click(function (e) {
+            e.preventDefault();
+            //little validation just to check username
+            if (textfield.val() != "") {
+                //$("body").scrollTo("#output");
+                $("#output").addClass("alert alert-success animated fadeInUp").html("Welcome back " + "<span style='text-transform:uppercase'>" + textfield.val() + "</span>");
+                $("#output").removeClass(' alert-danger');
+                $("input").css({
+                    "height": "0",
+                    "padding": "0",
+                    "margin": "0",
+                    "opacity": "0"
+                });
+                //change button text
+                $('button[type="submit"]').html("continue")
+                        .removeClass("btn-info")
+                        .addClass("btn-default").click(function () {
+                    $("input").css({
+                        "height": "auto",
+                        "padding": "10px",
+                        "opacity": "1"
+                    }).val("");
+                });
+
+                //show avatar
+                $(".avatar").css({
+                    "background-image": "url('http://api.randomuser.me/0.3.2/portraits/women/35.jpg')"
+                });
+            } else {
+                //remove success mesage replaced with error message
+                $("#output").removeClass(' alert alert-success');
+                $("#output").addClass("alert alert-danger animated fadeInUp").html("sorry enter a username ");
+            }
+            //console.log(textfield.val());
+
+        });
+    });
+</script>
+
+
+</body>
+</html>

@@ -7,7 +7,17 @@ class UsersController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
+    #if current_user
+    #  if current_user.email != @user.email 
+     #   redirect_to root_path
+     # end
+    #else
+   #   redirect_to root_path
+    #end     
+=======
     @user = User.find(params[:id])
+>>>>>>> master
   end
 
   def hosts
@@ -26,10 +36,22 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       session[:host_id] = nil
 
-      redirect_to root_path, notice: "Account created successful"
+      redirect_to root_path, notice: "Account created successfully"
     else
       render 'new'
     end
+  end
+
+  def edit
+      @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update user_params
+      redirect_to user_path(:id => current_user.id), notice: "Information updated"
+    else render 'edit' 
+    end  
   end
 
   private
