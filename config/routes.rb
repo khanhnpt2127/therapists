@@ -16,6 +16,8 @@ resources :conversations do
   resources :messages
 end
 
+resources :host_sessions
+
 resources :hosts do
   resources :reviews, module: :hosts
   member do

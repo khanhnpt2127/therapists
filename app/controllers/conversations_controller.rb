@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
-
+ 
+  
   def index
     if current_user
       @users = User.where.not(id: current_user.id)
@@ -48,4 +49,5 @@ class ConversationsController < ApplicationController
   def conversation_params
     params.permit(:recipient_id, :recipient_type)
   end
+ 
 end

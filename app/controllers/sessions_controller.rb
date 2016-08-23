@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:pending] = true 
+   if params[:pending] = true 
       if @host = Host.find_by(email: params[:email])
         if @host.authenticate(params[:password])
           session[:host_id] = @host.id
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
         end
       end
     end
-  end
+
 
 
 
@@ -46,5 +46,6 @@ class SessionsController < ApplicationController
   end
 
 end
+
 
 
