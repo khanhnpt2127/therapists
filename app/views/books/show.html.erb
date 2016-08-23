@@ -1,0 +1,7 @@
+Your appointment for the day
+<% @books.each do |book| %>
+	<%= book.name %><br>
+	At: <%= book.location %><br>
+	<%= book.description %><br>
+	From <%= book.start_at %> to <%= book.end_at %><br>
+<% end %>
