@@ -4,47 +4,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:pending] = true 
-      if @host = Host.find_by(email: params[:email])
-        if @host.authenticate(params[:password])
-          session[:host_id] = @host.id
-          session[:user_id] = nil
-          return redirect_to root_path
-        else
-          return redirect_to host_login_path(pending: true), notice: "password is wrong"
-        end          
-      else
-        return redirect_to host_login_path(pending: true), notice: "email does not exist"
-      end
-    else
-      if params[:pending] = false
-        if @user = User.find_by(email: params[:email])
+      if @user = User.find_by(email: params[:email])
           if @user.authenticate(params[:password])
             session[:user_id] = @user.id
             session[:host_id] = nil
-            return redirect_to root_path
+            return redirect_to root_path, notice: "Password is wrong"
           else
-            redirect_to user_login_path(pending: false), notice: "password is wrong"
+            return redirect_to root_path, notice: "Email not Found"
           end
-        else
-          return redirect_to user_login_path(pending: false), notice: "email does not exist"
-        end
+      else
+        return redirect_to root_path, notice: "Login successful "
       end
     end
-  end
+
 
 
   def destroy
-    if current_user
-      session[:user_id] = nil
-    end
-    if current_host
-      session[:host_id] = nil
-    end
+    session[:user_id] = nil
     redirect_to root_path
   end
 
-end
-
-
-
+  end
