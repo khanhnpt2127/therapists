@@ -1,15 +1,5 @@
+<h1> New Survey </h1>
 
-<%= form_for @survey do |f| %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <% f.fields_for :questions do |builder| %>
-  <p>
-    <%= builder.label :content, "Question" %><br />
-    <%= builder.text_area :content, :rows => 3 %>
-  </p>
-  <% end %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+<%= render :partial => 'form' %>
+
+<p><%= link_to "Back to List", surveys_path %></p>

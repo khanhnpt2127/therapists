@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
+    before_action :authenticate_user!
     before_action :get_conversation 
     before_action :secure_conversation
+    
     def index
 
       @messages = @conversation.messages.order(created_at: :asc)
