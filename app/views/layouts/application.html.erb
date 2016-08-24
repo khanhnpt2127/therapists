@@ -22,7 +22,7 @@
   <% end %>
 
   <% else %>  
-    <%= link_to 'Login as Host', host_login_path, class: 'btn btn-primary' %>
+    <%= link_to 'Login as Host', new_host_session_path , class: 'btn btn-primary' %>
     <%= link_to 'Login as User', user_login_path, class: 'btn btn-primary' %>
       <% unless flash.empty? %>
   		<% flash.each do |key, value| %>
