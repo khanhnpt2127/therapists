@@ -1,3 +1,5 @@
+<% user = current_user || current_host %>
+
 <% if @over_ten %>
   <%= link_to 'Show Previous' %>
 <% end %>
@@ -12,16 +14,31 @@
   <% end %>
 
 <% end %>
-<div class='ui' id='messages-list'>
-  <%= render @messages %>
-</div>
-
-<%= form_for [@conversation, @message], remote: true do |f| %>
+<div class="container clearfix">
+  <div class="chat">
+    <div class="chat-header clearfix">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
+      <div class="chat-about">
+      <% if current_user %>
+          <div class="chat-with">Chat with <%= @conversation.recipient.name %></div>
+          <div class="chat-num-messages">My phone number is <%= @conversation.recipient.phone_number %></div>
+        <% else %>
+          <div class="chat-with">Chat with <%= @conversation.sender.name %></div>
+          <div class="chat-num-messages">My phone number is <%= @conversation.sender.phone_number %></div>
+        <% end %>
+      </div>
+      <i class="fa fa-star"></i>
+    </div>
+    <div class="chat-history" id='messages-list' data-user-id="<%= user.id %>" data-user-type="<%= user.class.name %>">
+    <ul>  
+      <%= render @messages %>
+    </ul>
+  </div> 
+  <%= form_for [@conversation, @message], remote: true do |f| %>
   <div class=”field”>
     <%= f.text_area :body, class: 'form-control' ,id: 'messages-body'%>
   </div>
 
-  <% user = current_user || current_host %>
   <%= f.text_field :user_id, value: user.id, type: 'hidden' %>
   <%= f.text_field :user_type, value: user.class.name, type: 'hidden' %>
 
@@ -29,11 +46,15 @@
     <%= f.submit 'Add Reply', class: 'btn btn-primary' %>
   </div>
 <% end %>
+</div>
+
+
+
 
 <script>
-$('#messages-body').keypress(function(e){
-      if(e.which == 13){
-           $(this).closest('form').submit();
-       }
-    });
+  $('#messages-body').keypress(function(e){
+    if(e.which == 13){
+      $(this).closest('form').submit();
+    }
+  });
 </script>
