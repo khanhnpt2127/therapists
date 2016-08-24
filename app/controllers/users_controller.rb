@@ -32,8 +32,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       session[:host_id] = nil
-
-      redirect_to root_path, notice: "Account created successfully"
+      redirect_to new_survey_path, notice: "Account created successfully"
     else
       render 'new'
     end
@@ -50,6 +49,8 @@ class UsersController < ApplicationController
     else render 'edit' 
     end  
   end
+
+
 
   private
 

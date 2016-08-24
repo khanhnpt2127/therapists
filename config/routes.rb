@@ -38,4 +38,6 @@ resources :sessions ,only: [:new,:create]
 
 get '/logout' => 'sessions#destroy'
 
+get '/host_logout' => 'host_sessions#destroy'
+
 end

@@ -23,12 +23,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate_user!
+  def check_user!
     redirect_to new_user_path unless current_user || current_host
   end
 
+  def authenticate_user!
+    redirect_to root_path unless current_user || current_host
+  end
+
   def authenticate_host!
-    redirect_to new_host_path unless current_host
+    redirect_to root_path unless current_host
   end
 
 end
