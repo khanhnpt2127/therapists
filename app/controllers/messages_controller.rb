@@ -35,14 +35,24 @@ class MessagesController < ApplicationController
 
     def create
       @message = @conversation.messages.new(message_params)
+      
       if @message.save!
-        redirect_to conversation_messages_path(@conversation)
-      else
-        raise 'Sum tin wong'
+        ActionCable.server.broadcast 'messages', action: 'append', data: render_message(@message)
+        respond_to do |format|
+          format.html
+          format.json {
+            render json: @messages
+          }
+        end
       end
     end
 
     private
+
+    def render_message(message)
+      render(partial: "message", locals: { message: message })
+    end
+
     def message_params
       params.require(:message).permit(:body, :user_id, :user_type)
     end
@@ -59,7 +69,7 @@ class MessagesController < ApplicationController
         user = current_host.id
       end
 
-      if user != @conversation.sender_id && current_user_id != @conversation.recipient_id
+      if user != @conversation.sender_id && user != @conversation.recipient_id
         redirect_to root_path
 
       end
