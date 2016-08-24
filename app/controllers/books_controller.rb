@@ -24,6 +24,14 @@ class BooksController < ApplicationController
     end
   end
 
+  def show
+    if current_user
+      @books = Book.where(user_id: current_user.id)
+    else
+      @books = Book.where(host_id: current_host.id)
+    end
+  end
+
   private
 
   def book_params

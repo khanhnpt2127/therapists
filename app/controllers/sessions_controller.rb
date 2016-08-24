@@ -8,12 +8,12 @@ class SessionsController < ApplicationController
           if @user.authenticate(params[:password])
             session[:user_id] = @user.id
             session[:host_id] = nil
-            return redirect_to root_path, notice: "Password is wrong"
+            return redirect_to root_path, notice: "Login successfully"
           else
-            return redirect_to root_path, notice: "Email not Found"
+            return redirect_to root_path, notice: "Password is wrong"
           end
       else
-        return redirect_to root_path, notice: "Login successful "
+        return redirect_to root_path, notice: "Email not found"
       end
     end
 
@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:host_id] = nil
     redirect_to root_path
   end
 
