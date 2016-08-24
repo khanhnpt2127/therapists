@@ -10,18 +10,18 @@ class HostSessionsController < ApplicationController
       if @host.authenticate(params[:password])
         session[:host_id] = @host.id
         session[:user_id] = nil
-        redirect_to root_path, notice: "Login successful"
+        redirect_to root_path, notice: "Logged in"
       else
         redirect_to root_path, notice: "Password is wrong"
       end
     else
-      redirect_to root_path, notice: 'Email not Exist'
+      redirect_to root_path, notice: 'Email not found'
     end
   end
   
   def destroy
     session[:host_id] = nil
-    redirect_to root_path, notice: "Logout successful"
+    redirect_to root_path, notice: "Logged out"
   end
 end
 

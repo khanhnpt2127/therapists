@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
           if @user.authenticate(params[:password])
             session[:user_id] = @user.id
             session[:host_id] = nil
-            return redirect_to root_path, notice: "Login successfully"
+            return redirect_to root_path, notice: "Logged in"
           else
             return redirect_to root_path, notice: "Password is wrong"
           end
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     session[:host_id] = nil
-    redirect_to root_path
+    redirect_to root_path, notice: "Logged out"
   end
 
   end
