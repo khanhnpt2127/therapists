@@ -36,19 +36,22 @@
     </style>
 </head>
 <body>
-
+<link rel="stylesheet" href="/css/default_landing.css" /> 
+    <header>
+        <h1>App Name<span>Team name</span></h1>
+    </header>
+ 
     <div class="container">
         <section style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
                 <div class="col-md-8">
                     <div class="alert alert-info">
-                        <img src="PLEASE ADD CARRIERWAVE" class="img-rounded img-responsive" />
+                        <img src="/images/sample_avarta.jpg" style="width:80px;height:80px"  class="img-circle" />
                         <h2> <%= @user.name %>'s Profile </h2>
                         <p>
                         Name: <%= @user.name %> <br>
                         Email: <%= @user.email %> <br>
-                        Age: <br>
-                        Occupation: <br>  
+                       
                         </p>
                     </div>
                     <div >
@@ -68,14 +71,18 @@
 						<% user = current_user || current_host %>
 						<%= f.text_field :user_id, value: user.id , type: 'hidden' %>
 						<%= f.text_field :user_type, value: user.class.name, type: 'hidden' %>
-					 	<%= f.submit "SUBMIT" %>
+					 	<%= f.submit "SUBMIT", class: "btn btn-google" %>
 						<% end %>
                  </div>
             </div>
             <!-- ROW END -->
 
 
-        </section>
+          </section>
+   <footer>
+        <h1>CoderSchool</h1>
+    </footer>
+
         <!-- SECTION END -->
     </div>
     <!-- CONATINER END -->

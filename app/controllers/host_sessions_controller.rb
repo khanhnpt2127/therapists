@@ -10,7 +10,7 @@ class HostSessionsController < ApplicationController
       if @host.authenticate(params[:password])
         session[:host_id] = @host.id
         session[:user_id] = nil
-        redirect_to root_path, notice: "Logged in"
+        redirect_to host_path(:id => current_host.id), notice: "Logged in"
       else
         redirect_to root_path, notice: "Password is wrong"
       end

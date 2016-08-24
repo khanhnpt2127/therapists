@@ -1,3 +1,13 @@
+ <link rel="stylesheet" href="/css/default_landing.css" /> 
+    <header>
+        <h1>App Name<span>Team name</span></h1>
+      </header>
+    
+    <div align="center" class="container" style="text-align: center">
+      <h3>Create a new Therapist account</h3>
+      <div align="center"  style="background-color:  #d94839;width:500px;">
+       
+ 
 <%= form_tag users_path do %>
 
   <div class="form-group row">
@@ -39,6 +49,10 @@
 
   <button type="submit" class="btn btn-primary">Done</button>
 <% end %>
+</div>
+</div>
+
+
 <% if false   %>
 <%= f.label :name %>
 <%= f.text_field :name, placeholder: "Enter name" %>     

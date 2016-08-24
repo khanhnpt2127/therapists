@@ -1,10 +1,22 @@
+<link rel="stylesheet" href="/css/default_landing.css" /> 
+    <header>
+        <h1>App Name<span>Team name</span></h1>
+    </header>
+ 
 <h3>All Therapists</h3>
 <% @hosts.each do |host| %>
-  <%= link_to host.name, host_path(:id => host.id) %> <br>
+ <div class="container">
+ <%= link_to host.name, host_path(:id => host.id) %> <br>
   Description: <%= host.description %> <br>
   <%= link_to "Book a session with this therapist", new_book_path(:host_id => host.id) %>
+  <br>
   <%= link_to 'Message Host', conversations_path( recipient_id: host.id, recipient_type: host.class.name), method: 'post' %> <br>
   ----------------------
   <br>
-<% end %>
+  </div>
+<% end %>   <footer>
+        <h1>CoderSchool</h1>
+    </footer>
+
+ 
 

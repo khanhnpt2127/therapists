@@ -1,13 +1,40 @@
-<%= form_tag host_sessions_path, class: 'form' do %>
-  <div class="form-group">
-    <label>Email</label>
-    <%= text_field_tag :email, nil ,class: 'form-control' %>
-  </div>
+<div class="container">
+    <div class="login-container">
+        <div id="output"></div>
+        <h3>Doctor</h3>
+        <img class="avatar" align="center" src="/images/sample_avarta.jpg" alt="" class="img-circle"
+             style=" width: 100px; height: 100px;">
+        <hr style="color: dimgrey !important;margin-top: 10px; margin-bottom: 10px">
 
-  <div class="form-group">
-    <label>Password</label>
-    <%= password_field_tag :password, nil, class: 'form-control' %>
-  </div>
+        <!-- Facebook -->
+        <a href="#" target="_blank">
+            <img src="/images/facebook.png" alt="Facebook" />
+        </a>
+        <br>
+        <br>
+        <!-- Google+ -->
+        <a href="#" >
+            <img src="/images/google.png" alt="Google" />
+        </a>
+        <br>
+        <br>
+        <a href="#" >
+            <img src="/images/twister.png" alt="Google" />
+        </a>
 
-  <%= submit_tag "Submit", class: 'btn btn-success' %> 
-<% end %>
+
+        <div class="form-box" style="margin-top: 20px;">
+            <%= form_tag host_sessions_path, class: 'form' do %>
+                <form action="" method="">
+                    <%= text_field_tag :email, nil ,class: 'form-control', placeholder: 'email' %>
+                    <%= password_field_tag :password, nil, placeholder: 'password'%>
+                    <%= submit_tag "Submit" %>  
+                </form>
+            <% end %>
+        </div>
+
+        <a> <%= link_to 'Sign up as user!', new_user_path %> </a><br>
+        <a> <%= link_to 'Sign up as therapist!', new_host_path %> </a>
+    </div>
+</div>
+

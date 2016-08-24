@@ -1,33 +1,45 @@
-<h1>Create a new therapist account</h1>
-
-<%= form_for @host do |f| %>
+ <link rel="stylesheet" href="/css/default_landing.css" /> 
+    <header>
+        <h1>App Name<span>Team name</span></h1>
+      </header>
+    
+    <div align="center" class="container" style="text-align: center">
+      <h3>Create a new Doctor account</h3>
+      <div align="center"  style="background-color:  #d94839;width:500px;">
+       
+     
+      <%= form_for @host do |f| %>
 
 <% unless @host.errors.empty? %>
 <%= @host.errors.full_messages.to_sentence %>
 <% end %>
 
 <%= f.label :name %>
-<%= f.text_field :name, placeholder: "Enter name" %>     
+<%= f.text_field :name, placeholder: "Enter name",class: 'tb' %>     
 
 <%= f.label :email %>
-<%= f.text_field :email, placeholder: "Enter email" %>  
+<%= f.text_field :email, placeholder: "Enter email" ,class: 'tb' %>  
 
 <%= f.label :phone_number %>
-<%= f.text_field :phone_number, placeholder: "Enter phone number" %>  
+<%= f.text_field :phone_number, placeholder: "Enter phone number" ,class: 'tb' %>  
 
 <%= f.label :img_link %>
-<%= f.text_field :img_link, placeholder: "Link to a photo" %>  
+<%= f.text_field :img_link, placeholder: "Link to a photo",class: 'tb'  %>  
 
 <%= f.label :description %>
-<%= f.text_field :description, placeholder: "Add some description..." %>  
+<%= f.text_field :description, placeholder: "Add some description..." ,class: 'tb' %>  
 
 <%= f.label :password %>
-<%= f.password_field :password, placeholder: "Enter password" %>  
+<%= f.password_field :password, placeholder: "Enter password" ,class: 'tb' %>  
 
-<%= f.submit %>
+<%= f.submit  %>
 
 <% end %>
-
+</div>
 <form action="/hosts" method="post">
 
 </form>
+    </div>
+   
+
+

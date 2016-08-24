@@ -37,15 +37,19 @@
     </style>
 </head>
 <body>
-
+<link rel="stylesheet" href="/css/default_landing.css" /> 
+    <header>
+        <h1>App Name<span>Team name</span></h1>
+    </header>
+ 
     <div class="container">
         <section style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
                 
                 <div class="col-md-8">
                     <div class="alert alert-info">
-                    <img src="assets/img/250x250.png" class="img-rounded img-responsive" />
-                        <h2> <%= @host.name %>'s Profile </h2>
+                                        <img src="/images/sample_avarta.jpg" style="width:80px;height:80px"  class="img-circle" />
+        <h2> <%= @host.name %>'s Profile </h2>
                         <h4> Email: <%= @host.email %></h4>
                         <h4> About <%= @host.name %>: </h4>
                         <h5> <%= @host.description %> </h5>
@@ -71,13 +75,15 @@
                             <% user = current_user || current_host %>
                             <%= f.text_field :user_id, value: user.id , type: 'hidden' %>
                             <%= f.text_field :user_type, value: user.class.name, type: 'hidden' %>
-                            <%= f.submit "SUBMIT" %>
-                        <% end %>
+                        					 	<%= f.submit "SUBMIT", class: "btn btn-google" %>
+	 <% end %>
 
 
 
         </section>
-        <!-- SECTION END -->
+        <!-- SECTION END -->     </footer>
+
+ 
     </div>
     <!-- CONTAINER END -->
 
