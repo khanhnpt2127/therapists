@@ -1,14 +1,33 @@
+<% 
+  css_class = 'other-message float-right' 
 
-<% if message.body %>
-      <div class=”item”>
-        <div class=”content”>
-          <div class=”header”><strong><%= message.user.name %></strong>  <%= message.message_time %></div>
-          <div class=”list”>
-            <div class=”item”>
-              <i class=”right triangle icon”></i>
-              <%= message.body %>
-            </div>
-          </div>
-        </div>
-      </div>
-  <% end %>
+  if message.user == current_user || message.user == current_host
+    css_class = 'my-message float-left'
+  end
+%>
+
+<% css_class2 = 'align-right'
+if message.user == current_user || message.user == current_host
+  css_class2 = 'align-left'
+end
+%>
+
+<div class="message-data <%= css_class2 %>">
+<div class="clearfix"> 
+</div>
+  
+  
+  </div>
+  
+<div class="message <%= css_class %>" data-user-id="<%= message.user.id %>" data-user-type="<%= message.user.class.name %>" >
+  <%= message.body %>
+  <div class="chat-num-messages" style="font-size:70%">
+    <%= message.message_time %>
+  </div>
+  
+  <div class="chat-num-messages" style="font-size:50%">
+    <%= message.user.name %>
+  </div>
+
+</div>
+      
