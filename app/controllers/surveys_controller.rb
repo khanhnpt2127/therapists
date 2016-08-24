@@ -21,7 +21,7 @@ class SurveysController < ApplicationController
     @survey = Survey.new survey_params
     if @survey.save!
       flash[:notice] = "Successfully created survey."
-      redirect_to root_path
+      redirect_to hosts_user_path(current_user.id)
     else
       render :action => 'new'
     end
