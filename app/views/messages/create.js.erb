@@ -1,0 +1,4 @@
+
+<% if @message.valid? %>
+  $('#messages-list').append("<%= j render 'message', message: @message %>");
+<% end %>

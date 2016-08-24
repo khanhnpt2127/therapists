@@ -1,5 +1,5 @@
 <% if @over_ten %>
-  <%= link_to ‘Show Previous’ %>
+  <%= link_to 'Show Previous' %>
 <% end %>
 <% if @survey.nil? %>
 <% else %>
@@ -12,28 +12,13 @@
   <% end %>
 
 <% end %>
-<div class='ui'>
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <div class=”item”>
-        <div class=”content”>
-          <div class=”header”><strong><%= message.user.name %></strong>  <%= message.message_time %></div>
-          <div class=”list”>
-            <div class=”item”>
-              <i class=”right triangle icon”></i>
-              <%= message.body %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-
+<div class='ui' id='messages-list'>
+  <%= render @messages %>
 </div>
 
-<%= form_for [@conversation, @message], html: {class: 'form' } do |f| %>
+<%= form_for [@conversation, @message], remote: true do |f| %>
   <div class=”field”>
-    <%= f.text_area :body, class: 'form-control' %>
+    <%= f.text_area :body, class: 'form-control' ,id: 'messages-body'%>
   </div>
 
   <% user = current_user || current_host %>
@@ -44,3 +29,11 @@
     <%= f.submit 'Add Reply', class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<script>
+$('#messages-body').keypress(function(e){
+      if(e.which == 13){
+           $(this).closest('form').submit();
+       }
+    });
+</script>

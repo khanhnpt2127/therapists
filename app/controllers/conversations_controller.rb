@@ -16,6 +16,9 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def new
+    @conversation = Conversation.new
+  end
 
   def create
     attrs = conversation_params    
