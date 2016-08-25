@@ -53,7 +53,9 @@
                         <h4> Email: <%= @host.email %></h4>
                         <h4> About <%= @host.name %>: </h4>
                         <h5> <%= @host.description %> </h5>
-                    </div>
+                       <%= link_to "See patients", hosts_user_path, class: 'btn btn-google'  %>
+                    
+                      </div>
                     <div>
                         <%= link_to "Send #{@host.name} a message!", conversations_path(recipient_id: @host.id, recipient_type: @host.class.name), method: 'post', class: 'btn btn-success' %> 
                         <br><br>    
